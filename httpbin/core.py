@@ -638,7 +638,8 @@ def redirect_to():
     # werkzeug from "fixing" the URL. This endpoint should set the Location
     # header to the exact string supplied.
     response = app.make_response("")
-    response.status_code = 302
+    print(args)
+    response.status_code = 400
     if "status_code" in args:
         status_code = int(args["status_code"])
         if status_code >= 300 and status_code < 400:
