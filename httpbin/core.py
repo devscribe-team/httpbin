@@ -255,7 +255,11 @@ def view_html_page():
       200:
         description: An HTML page.
     """
-
+    print(request.headers)
+    a = 1
+    b = 2
+    c = a + b
+    print(c)
     return render_template("moby.html")
 
 
