@@ -644,6 +644,11 @@ def redirect_to():
         status_code = int(args["status_code"])
         if status_code >= 300 and status_code < 400:
             response.status_code = status_code
+    if response.status_code == 400:
+        response.data = json.dumps({
+            "error": "Invalid status code"
+        })
+        response.headers["Content-Type"] = "application/json"
     response.headers["Location"] = args["url"].encode("utf-8")
 
     return response
