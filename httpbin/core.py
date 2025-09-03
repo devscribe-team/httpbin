@@ -241,8 +241,9 @@ def a():
   var1 = 7
   var2 = 8
   c_result = c(var1,var2)
-  print(c_result)
-  return jsonify({"c_result": c_result})
+  b_result = b(var1, var2)
+  print(b_result, c_result)
+  return jsonify({"c_result": c_result, "b_result": b_result})
 
 
 def b(var1, var2):
