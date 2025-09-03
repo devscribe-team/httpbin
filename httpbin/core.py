@@ -660,7 +660,7 @@ def redirect_to():
         status_code = int(args["status_code"])
         if status_code >= 300 and status_code < 400:
             response.status_code = status_code
-    if response.status_code == 400:
+    if response.status_code == 300:
         response.data = json.dumps({
             "error": "Invalid status code"
         })        
