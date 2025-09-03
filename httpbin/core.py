@@ -236,6 +236,22 @@ def set_cors_headers(response):
 # Routes
 # ------
 
+@app.route("/a")
+def a():
+  var1 = 7
+  var2 = 8
+  b_result = b(var1, var2)
+  c_result = c(var1,var2)
+  print(b_result, c_result)
+  return jsonify({"b_result": b_result, "c_result": c_result})
+
+
+def b(var1, var2):
+  return var1 + var2
+  
+def c(var1, var2):
+  return var1 * var2
+  
 
 @app.route("/legacy")
 def view_landing_page():
@@ -644,10 +660,10 @@ def redirect_to():
         status_code = int(args["status_code"])
         if status_code >= 300 and status_code < 400:
             response.status_code = status_code
-     if response.status_code == 400:
+    if response.status_code == 400:
         response.data = json.dumps({
             "error": "Invalid status code"
-        })    
+        })        
     response.headers["Location"] = args["url"].encode("utf-8")
     
     return response
