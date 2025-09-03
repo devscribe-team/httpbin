@@ -277,7 +277,6 @@ def view_robots_page():
     """
 
     response = make_response()
-    print("debug")
     response.data = ROBOT_TXT
     response.content_type = "text/plain"
     return response
