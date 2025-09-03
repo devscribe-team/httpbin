@@ -241,8 +241,9 @@ def a():
   var1 = 7
   var2 = 8
   c_result = c(var1,var2)
-  print(c_result)
-  return jsonify({"c_result": c_result})
+  b_result = b(var1, var2)
+  print(b_result, c_result)
+  return jsonify({"c_result": c_result, "b_result": b_result})
 
 
 def b(var1, var2):
@@ -658,11 +659,7 @@ def redirect_to():
     if "status_code" in args:
         status_code = int(args["status_code"])
         if status_code >= 300 and status_code < 400:
-            response.status_code = status_code
-    if response.status_code == 300:
-        response.data = json.dumps({
-            "error": "Invalid status code"
-        })        
+            response.status_code = status_code     
     response.headers["Location"] = args["url"].encode("utf-8")
     
     return response
